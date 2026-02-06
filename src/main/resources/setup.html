@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: system-ui;
+      padding: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      margin-top: 16px;
+      padding: 10px;
+      width: 100%;
+      background: #38bdf8;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .error {
+      color: #f87171;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🔐 SecureChat Setup</h2>
+
+<input id="openai" placeholder="OpenAI API Key" />
+<input id="license" placeholder="License Key" />
+
+<div id="error" class="error"></div>
+
+<button onclick="submit()">Activate</button>
+
+<script>
+function submit() {
+  document.getElementById("error").innerText = "";
+  java.submitSetup(
+    document.getElementById("openai").value,
+    document.getElementById("license").value
+  );
+}
+
+function showError(msg) {
+  document.getElementById("error").innerText = msg;
+}
+
+function onSetupSuccess() {
+  location.href = "secure.html";
+}
+</script>
+
+</body>
+</html>
